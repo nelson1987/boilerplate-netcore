@@ -31,16 +31,14 @@ public class MovementsController : ControllerBase
     public async Task<ActionResult<List<Movement>>> Get(CancellationToken cancellationToken)
     {
         _logger.LogInformation("Get");
-        var listagem = await _readRepository.GetAsync(cancellationToken);
-        return Ok(listagem);
+        return Ok(await _readRepository.GetAsync(cancellationToken));
     }
 
     [HttpGet("{id:guid}")]
     public async Task<ActionResult<Movement?>> GetById(Guid id, CancellationToken cancellationToken)
     {
         _logger.LogInformation("GetById");
-        var listagem = await _readRepository.GetAsync(id, cancellationToken);
-        return Ok(listagem);
+        return Ok(await _readRepository.GetAsync(id, cancellationToken));
     }
 
     [HttpPost]

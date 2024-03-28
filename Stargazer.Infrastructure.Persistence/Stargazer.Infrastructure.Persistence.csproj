@@ -12,5 +12,6 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\Stargazer.Domain\Stargazer.Domain.csproj" />
+	  <ProjectReference Include="..\Stargazer.Infrastructure\Stargazer.Infrastructure.csproj" />
 	</ItemGroup>
 </Project>
