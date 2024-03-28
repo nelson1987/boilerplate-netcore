@@ -1,22 +1,22 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
-  <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <UserSecretsId>9568ca44-057e-499d-a276-1130d96bd752</UserSecretsId>
-    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<UserSecretsId>9568ca44-057e-499d-a276-1130d96bd752</UserSecretsId>
+		<DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.6" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="FluentValidation" Version="11.9.0" />
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Stargazer.Application\Stargazer.Application.csproj" />
-    <ProjectReference Include="..\Stargazer.Domain\Stargazer.Domain.csproj" />
-    <ProjectReference Include="..\Stargazer.Infrastructure.Persistence\Stargazer.Infrastructure.Persistence.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Stargazer.Application\Stargazer.Application.csproj" />
+		<ProjectReference Include="..\Stargazer.Domain\Stargazer.Domain.csproj" />
+		<ProjectReference Include="..\Stargazer.Infrastructure.Persistence\Stargazer.Infrastructure.Persistence.csproj" />
+	</ItemGroup>
 
 </Project>
