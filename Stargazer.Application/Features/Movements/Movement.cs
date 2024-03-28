@@ -1,8 +1,6 @@
 ﻿using FluentResults;
 using FluentValidation;
 using Stargazer.Domain.Entities;
-using Stargazer.Infrastructure;
-using Stargazer.Infrastructure.Persistence;
 
 namespace Stargazer.Application.Features.Movements;
 public record AddMovementCommand
@@ -19,6 +17,7 @@ public record AddMovementCommand
         };
     }
 }
+
 public class AddMovementCommandValidator : AbstractValidator<AddMovementCommand>
 {
     public AddMovementCommandValidator()

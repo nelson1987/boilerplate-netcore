@@ -8,6 +8,7 @@ public abstract class AuditableBaseEntity
     public string LastModifiedBy { get; set; }
     public DateTime? LastModified { get; set; }
 }
+
 public abstract class AuditableBaseEvent
 {
     public virtual int Id { get; set; }

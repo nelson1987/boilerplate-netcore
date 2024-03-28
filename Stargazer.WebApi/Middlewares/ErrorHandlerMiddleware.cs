@@ -1,6 +1,6 @@
-﻿using System.Net;
+﻿using Stargazer.Application;
+using System.Net;
 using System.Text.Json;
-using Stargazer.Application;
 
 namespace Stargazer.WebApi.Middlewares;
 
