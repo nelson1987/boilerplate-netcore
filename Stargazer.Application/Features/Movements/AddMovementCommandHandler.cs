@@ -35,8 +35,8 @@ public class AddMovementCommandHandler : IAddMovementCommandHandler
         Movement entity = command;
         await _writeRepository.CreateAsync(entity, cancellationToken);
         
-        MovementEvent @event = entity;
-        await _producer.Send(@event, cancellationToken);
+        MovementCreatedEvent createdEvent = entity;
+        await _producer.Send(createdEvent, cancellationToken);
 
         return Result.Ok();
     }

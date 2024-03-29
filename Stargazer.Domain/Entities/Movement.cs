@@ -15,12 +15,13 @@ public enum Status
     Created = 3
 }
 
-public class MovementEvent : AuditableBaseEvent
+public class MovementCreatedEvent : AuditableBaseEvent
 {
-    public decimal Valor { get; init; }
-    public Status Status { get; init; }
+    public decimal Valor { get; set; }
+    public Status Status { get; set; }
+    public string Conta { get; set; }
 
-    public static implicit operator MovementEvent(Movement v)
+    public static implicit operator MovementCreatedEvent(Movement v)
     {
         return new Movement
         {

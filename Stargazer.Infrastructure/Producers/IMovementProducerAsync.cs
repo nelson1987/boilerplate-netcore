@@ -1,10 +1,10 @@
 ﻿using Stargazer.Domain.Entities;
 
 namespace Stargazer.Infrastructure.Producers;
-public interface IMovementProducerAsync : IProducer<MovementEvent>
+public interface IMovementProducerAsync : IProducer<MovementCreatedEvent>
 {
 }
 
-public class MovementProducerAsync : Producer<MovementEvent>, IMovementProducerAsync
+public class MovementProducerAsync : Producer<MovementCreatedEvent>, IMovementProducerAsync
 {
 }
