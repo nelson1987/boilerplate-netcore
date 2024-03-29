@@ -9,6 +9,9 @@ ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 COPY ["/Stargazer.WebApi/Stargazer.WebApi.csproj", "Stargazer.WebApi/"]
 COPY ["/Stargazer.Application/Stargazer.Application.csproj", "Stargazer.Application/"]
+COPY ["/Stargazer.Domain/Stargazer.Domain.csproj", "Stargazer.Domain/"]
+COPY ["/Stargazer.Infrastructure/Stargazer.Infrastructure.csproj", "Stargazer.Infrastructure/"]
+COPY ["/Stargazer.Infrastructure.Persistence/Stargazer.Infrastructure.Persistence.csproj", "Stargazer.Infrastructure.Persistence/"]
 RUN dotnet restore "./Stargazer.WebApi/Stargazer.WebApi.csproj"
 COPY . .
 WORKDIR "/src/Stargazer.WebApi"
