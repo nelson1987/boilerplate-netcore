@@ -8,6 +8,7 @@ public class HttpExternalServiceClient : IHttpExternalServiceClient
 {
     public Task<bool> GetTaskAsync(CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        return Task.FromResult(true);
+        //throw new NotImplementedException();
     }
 }

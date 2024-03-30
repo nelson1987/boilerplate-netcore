@@ -19,14 +19,19 @@ public class MovementCreatedEvent : AuditableBaseEvent
 {
     public decimal Valor { get; set; }
     public Status Status { get; set; }
-    public string Conta { get; set; }
+    public required string Conta { get; set; }
 
     public static implicit operator MovementCreatedEvent(Movement v)
     {
         return new Movement
         {
+            Id = v.Id,
             Valor = v.Valor,
-            Status = v.Status
+            Status = v.Status,
+            CreatedBy = v.CreatedBy,
+            Created = v.Created,
+            LastModified = v.LastModified,
+            LastModifiedBy = v.LastModifiedBy,
         };
     }
 }

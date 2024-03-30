@@ -12,7 +12,9 @@ public record AddMovementCommand
         return new Movement
         {
             Valor = v.Valor,
-            Status = Status.Pending
+            Status = Status.Pending,
+            CreatedBy = "Command",
+            LastModifiedBy = "Command"
         };
     }
 }

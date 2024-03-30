@@ -17,6 +17,7 @@
 		<ProjectReference Include="..\Stargazer.Application\Stargazer.Application.csproj" />
 		<ProjectReference Include="..\Stargazer.Domain\Stargazer.Domain.csproj" />
 		<ProjectReference Include="..\Stargazer.Infrastructure.Persistence\Stargazer.Infrastructure.Persistence.csproj" />
+		<ProjectReference Include="..\Stargazer.Infrastructure\Stargazer.Infrastructure.csproj" />
 	</ItemGroup>
 
 </Project>

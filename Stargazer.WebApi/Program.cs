@@ -1,4 +1,5 @@
 using Stargazer.Application;
+using Stargazer.Infrastructure;
 using Stargazer.Infrastructure.Persistence;
 using Stargazer.WebApi.Middlewares;
 
@@ -6,12 +7,14 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddPersistence()
-                .AddApplication();
+                .AddApplication()
+                .AddBroker();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+//builder.Services.AddFluentValidationRulesToSwagger();
 
 var app = builder.Build();
 
