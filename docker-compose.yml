@@ -1,10 +1,19 @@
-version: "3"
+version: "3.4"
 services:
     webapi:
       container_name: api-net
       build: .
       ports:
         - 8080:8080
+      depends_on:
+        - mongo
+        - broker
+      links:
+        - mongo
+        - broker
+      networks:
+        - webapi-mongo
+        - webapi-rabbitmq
 
     mongo:
       container_name: container-mongodb
@@ -18,7 +27,11 @@ services:
         MONGO_INITDB_DATABASE: root-db
       volumes:
         - ./scripts/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
-    
+      networks:
+        - webapi-mongo
+      expose:
+        - 27017
+
     broker:
       container_name: rabbitmq
       image: rabbitmq:management
@@ -28,3 +41,11 @@ services:
       ports:
         - 5672:5672
         - 15672:15672
+      networks:
+        - webapi-rabbitmq
+      expose:
+        - 5672
+
+networks:
+  webapi-mongo:
+  webapi-rabbitmq:

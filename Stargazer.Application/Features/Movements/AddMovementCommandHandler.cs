@@ -35,9 +35,9 @@ public class AddMovementCommandHandler : IAddMovementCommandHandler
         Movement entity = command;
         await _writeRepository.CreateAsync(entity, cancellationToken);
 
-        MovementCreatedEvent createdEvent = entity;
-        //var createdEvent = new Domain.Entities.MovementCreatedEvent() { Conta = "Conta", Id = 1, Status = Domain.Entities.Status.Pending, Valor = 0.01M, LastModified = DateTime.UtcNow };
-        await _producer.Send(createdEvent, cancellationToken);
+        // MovementCreatedEvent createdEvent = entity;
+        // //var createdEvent = new Domain.Entities.MovementCreatedEvent() { Conta = "Conta", Id = 1, Status = Domain.Entities.Status.Pending, Valor = 0.01M, LastModified = DateTime.UtcNow };
+        // await _producer.Send(createdEvent, cancellationToken);
 
         return Result.Ok();
     }

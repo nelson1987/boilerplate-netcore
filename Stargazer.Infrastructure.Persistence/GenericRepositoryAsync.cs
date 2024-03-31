@@ -13,11 +13,17 @@ public interface IGenericRepositoryAsync<T> where T : class
 
 public class GenericRepositoryAsync<T> : IGenericRepositoryAsync<T> where T : class
 {
-    private MongoClient client = new MongoClient("mongodb://root:password@localhost:27017/");
+    // private readonly ILogger<GenericRepositoryAsync<T>> _logger;
+    // public GenericRepositoryAsync(ILogger<GenericRepositoryAsync<T>> logger)
+    // {
+    //     _logger = logger;
+    // }
+    private MongoClient client = new MongoClient("mongodb://root:password@mongo:27017/");
 
     [Obsolete]
     public async Task? CreateAsync(T entity, CancellationToken cancellationToken = default)
     {
+        //_logger.LogInformation("CreateAsync");
         IMongoDatabase db = client.GetDatabase("warehouse");
         IMongoCollection<T> Collection = db.GetCollection<T>("collectionV4");
 
