@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Logging;
 using Stargazer.Domain.Bases;
 
-namespace Stargazer.Infrastructure;
+namespace Stargazer.Infrastructure.Bases;
 
 
 public interface IConsumer<T> where T : AuditableBaseEvent

@@ -1,5 +1,5 @@
 ﻿using FluentValidation;
-using Stargazer.Domain.Entities;
+using Stargazer.Domain.Features.Movements;
 
 namespace Stargazer.Application.Features.Movements;
 public record AddMovementCommand
@@ -13,7 +13,7 @@ public record AddMovementCommand
         {
             Conta = Conta,
             Valor = Valor,
-            Status = Status.Pending,
+            MovementStatus = MovementStatus.Pending,
             CreatedBy = "Command",
             Created = DateTime.Now,
             LastModifiedBy = "Command",

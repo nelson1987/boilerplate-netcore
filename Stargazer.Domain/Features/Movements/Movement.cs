@@ -1,11 +1,11 @@
 using Stargazer.Domain.Bases;
 
-namespace Stargazer.Domain.Entities;
+namespace Stargazer.Domain.Features.Movements;
 
 public class Movement : AuditableBaseEntity
 {
     public decimal Valor { get; init; }
-    public Status Status { get; init; }
+    public MovementStatus MovementStatus { get; init; }
     public required string Conta { get; set; }
 
     public MovementCreatedEvent MapToEvent()
@@ -15,25 +15,11 @@ public class Movement : AuditableBaseEntity
             Id = Id,
             Conta = Conta,
             Valor = Valor,
-            Status = Status,
+            MovementStatus = MovementStatus,
             CreatedBy = CreatedBy,
             Created = Created,
             LastModified = LastModified,
             LastModifiedBy = LastModifiedBy,
         };
     }
-}
-
-public enum Status
-{
-    Pending = 1,
-    Rejected = 2,
-    Created = 3
-}
-
-public class MovementCreatedEvent : AuditableBaseEvent
-{
-    public decimal Valor { get; set; }
-    public Status Status { get; set; }
-    public required string Conta { get; set; }
 }

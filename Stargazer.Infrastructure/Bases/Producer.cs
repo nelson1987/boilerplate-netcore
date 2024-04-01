@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Logging;
 using Stargazer.Domain.Bases;
 
-namespace Stargazer.Infrastructure;
+namespace Stargazer.Infrastructure.Bases;
 public interface IProducer<T> where T : AuditableBaseEvent
 {
     Task Send(T @event, CancellationToken cancellationToken = default);

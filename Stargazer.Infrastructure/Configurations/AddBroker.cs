@@ -1,12 +1,11 @@
 ﻿using MassTransit;
 using Microsoft.Extensions.DependencyInjection;
-using Stargazer.Domain.Entities;
 using Stargazer.Infrastructure.Consumers;
 
-namespace Stargazer.Infrastructure;
+namespace Stargazer.Infrastructure.Configurations;
 public static class Services
 {
-    public static void AddBroker(this IServiceCollection services)
+    public static IServiceCollection AddRabbitmqBroker(this IServiceCollection services)
     {
         services.AddMassTransit(x =>
         {
@@ -26,5 +25,6 @@ public static class Services
             x.SetKebabCaseEndpointNameFormatter();
             x.AddConsumer<MovementConsumerAsync>();
         });
+        return services;
     }
 }

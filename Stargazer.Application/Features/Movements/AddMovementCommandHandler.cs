@@ -1,6 +1,6 @@
 ﻿using FluentResults;
-using Stargazer.Domain.Entities;
-using Stargazer.Infrastructure;
+using Stargazer.Domain.Features.Movements;
+using Stargazer.Infrastructure.Bases;
 using Stargazer.Infrastructure.Persistence.Repositories;
 using Stargazer.Infrastructure.Producers;
 

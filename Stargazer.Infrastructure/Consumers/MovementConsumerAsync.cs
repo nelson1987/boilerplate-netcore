@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
-using Stargazer.Domain.Entities;
+using Stargazer.Domain.Features.Movements;
+using Stargazer.Infrastructure.Bases;
 using Stargazer.Infrastructure.Persistence.Repositories;
 
 namespace Stargazer.Infrastructure.Consumers;
@@ -18,6 +19,6 @@ public class MovementConsumerAsync : Consumer<MovementCreatedEvent>, IMovementCo
 
     public override async Task Execute(MovementCreatedEvent @event)
     {
-        await _writeRepository.UpdateStatusAsync(@event.Id, Status.Created);
+        await _writeRepository.UpdateStatusAsync(@event.Id, MovementStatus.Created);
     }
 }

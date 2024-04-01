@@ -1,7 +1,7 @@
 using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 using Stargazer.Application.Features.Movements;
-using Stargazer.Domain.Entities;
+using Stargazer.Domain.Features.Movements;
 using Stargazer.Infrastructure.Persistence.Repositories;
 using Stargazer.WebApi.Extensions;
 

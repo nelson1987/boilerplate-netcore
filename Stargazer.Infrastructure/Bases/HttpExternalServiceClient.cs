@@ -1,4 +1,4 @@
-﻿namespace Stargazer.Infrastructure;
+﻿namespace Stargazer.Infrastructure.Bases;
 public interface IHttpExternalServiceClient
 {
     Task<bool> GetTaskAsync(CancellationToken cancellationToken = default);

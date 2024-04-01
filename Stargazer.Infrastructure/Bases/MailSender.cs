@@ -1,6 +1,6 @@
 ﻿using Stargazer.Domain.Bases;
 
-namespace Stargazer.Infrastructure;
+namespace Stargazer.Infrastructure.Bases;
 
 public interface IMailSender
 {

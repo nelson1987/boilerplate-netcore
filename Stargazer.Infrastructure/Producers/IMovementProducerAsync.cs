@@ -1,6 +1,7 @@
 ﻿using MassTransit;
 using Microsoft.Extensions.Logging;
-using Stargazer.Domain.Entities;
+using Stargazer.Domain.Features.Movements;
+using Stargazer.Infrastructure.Bases;
 
 namespace Stargazer.Infrastructure.Producers;
 public interface IMovementProducerAsync : IProducer<MovementCreatedEvent>
