@@ -15,7 +15,7 @@ public class MovementRepositoryAsync : GenericRepositoryAsync<Movement>, IMoveme
     private readonly ILogger<GenericRepositoryAsync<Movement>> _logger;
 
     public MovementRepositoryAsync(ILogger<GenericRepositoryAsync<Movement>> logger, MongoDbOptions dbOptions) 
-        : base(logger, dbOptions, "warehouse", "collectionV4")
+        : base(logger, dbOptions, "warehouse", nameof(Movement))
     {
         _logger = logger;
     }
@@ -25,7 +25,7 @@ public class MovementRepositoryAsync : GenericRepositoryAsync<Movement>, IMoveme
         _logger.LogInformation("UpdateStatusAsync");
         var filter = Builders<Movement>.Filter.Eq(x => x.Id, id);
         var update = Builders<Movement>.Update
-            .Set(x => x.MovementStatus, newMovementStatus)
+            .Set(x => x.Status, newMovementStatus)
             .Set(x => x.LastModified, DateTime.Now)
             .Set(x => x.LastModifiedBy, "Consumer");
         await Collection.UpdateOneAsync(filter, update, cancellationToken: cancellationToken);

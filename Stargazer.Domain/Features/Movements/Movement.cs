@@ -5,7 +5,7 @@ namespace Stargazer.Domain.Features.Movements;
 public class Movement : AuditableBaseEntity
 {
     public decimal Valor { get; init; }
-    public MovementStatus MovementStatus { get; init; }
+    public MovementStatus Status { get; init; }
     public required string Conta { get; set; }
 
     public MovementCreatedEvent MapToEvent()
@@ -15,7 +15,7 @@ public class Movement : AuditableBaseEntity
             Id = Id,
             Conta = Conta,
             Valor = Valor,
-            MovementStatus = MovementStatus,
+            Status = Status,
             CreatedBy = CreatedBy,
             Created = Created,
             LastModified = LastModified,

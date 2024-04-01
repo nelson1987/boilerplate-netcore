@@ -13,7 +13,7 @@ public record AddMovementCommand
         {
             Conta = Conta,
             Valor = Valor,
-            MovementStatus = MovementStatus.Pending,
+            Status = MovementStatus.Pending,
             CreatedBy = "Command",
             Created = DateTime.Now,
             LastModifiedBy = "Command",

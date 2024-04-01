@@ -34,8 +34,8 @@ public class MovementsController : ControllerBase
         return Ok(await _readRepository.GetAsync(cancellationToken));
     }
 
-    [HttpGet("{id:guid}")]
-    public async Task<ActionResult<Movement?>> GetById(Guid id, CancellationToken cancellationToken)
+    [HttpGet("{id}")]
+    public async Task<ActionResult<Movement?>> GetById([FromRoute] string id, CancellationToken cancellationToken)
     {
         _logger.LogInformation("GetById");
         return Ok(await _readRepository.GetAsync(id, cancellationToken));
