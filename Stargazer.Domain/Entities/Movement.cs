@@ -6,6 +6,22 @@ public class Movement : AuditableBaseEntity
 {
     public decimal Valor { get; init; }
     public Status Status { get; init; }
+    public required string Conta { get; set; }
+
+    public MovementCreatedEvent MapToEvent()
+    {
+        return new MovementCreatedEvent
+        {
+            Id = Id,
+            Conta = Conta,
+            Valor = Valor,
+            Status = Status,
+            CreatedBy = CreatedBy,
+            Created = Created,
+            LastModified = LastModified,
+            LastModifiedBy = LastModifiedBy,
+        };
+    }
 }
 
 public enum Status
@@ -20,18 +36,4 @@ public class MovementCreatedEvent : AuditableBaseEvent
     public decimal Valor { get; set; }
     public Status Status { get; set; }
     public required string Conta { get; set; }
-
-    public static implicit operator MovementCreatedEvent(Movement v)
-    {
-        return new Movement
-        {
-            Id = v.Id,
-            Valor = v.Valor,
-            Status = v.Status,
-            CreatedBy = v.CreatedBy,
-            Created = v.Created,
-            //LastModified = v.LastModified,
-            LastModifiedBy = v.LastModifiedBy,
-        };
-    }
 }

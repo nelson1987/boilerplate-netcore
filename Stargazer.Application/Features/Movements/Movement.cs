@@ -7,15 +7,16 @@ public record AddMovementCommand
     public decimal Valor { get; init; }
     public required string Conta { get; init; }
 
-    public static implicit operator Movement(AddMovementCommand v)
+    public Movement MapToEntity()
     {
         return new Movement
         {
-            Valor = v.Valor,
+            Conta = Conta,
+            Valor = Valor,
             Status = Status.Pending,
             CreatedBy = "Command",
-            LastModifiedBy = "Command",
             Created = DateTime.Now,
+            LastModifiedBy = "Command",
             LastModified = DateTime.Now
         };
     }

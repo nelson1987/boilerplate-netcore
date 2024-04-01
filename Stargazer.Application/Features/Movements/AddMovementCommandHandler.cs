@@ -32,20 +32,10 @@ public class AddMovementCommandHandler : IAddMovementCommandHandler
         var autorizado = await _httpExternalServiceClient.GetTaskAsync(cancellationToken);
         if (!autorizado) return Result.Fail("Não Autorizado.");
 
-        Movement entity = command;
+        Movement entity = command.MapToEntity();
         await _writeRepository.CreateAsync(entity, cancellationToken);
 
-        //MovementCreatedEvent createdEvent = entity;
-        var createdEvent = new Domain.Entities.MovementCreatedEvent()
-        {
-            Conta = "Conta",
-            Id = entity.Id,
-            Status = Domain.Entities.Status.Pending,
-            Valor = 0.01M,
-            LastModified = DateTime.UtcNow,
-            CreatedBy = "CreatedBy",
-            LastModifiedBy = "LastModifiedBy"
-        };
+        MovementCreatedEvent createdEvent = entity.MapToEvent();
         await _producer.Send(createdEvent, cancellationToken);
 
         return Result.Ok();
