@@ -3,7 +3,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Stargazer.Application.Features.Movements;
 
 namespace Stargazer.Application;
-
 public static class ServiceCollections
 {
     public static IServiceCollection AddApplication(this IServiceCollection services)

@@ -3,6 +3,9 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace Stargazer.Domain.Bases;
 
+public record RabbitMqOptions(string server, string user, string password);
+
+public record MongoDbOptions(string server, string user, string password);
 public abstract class AuditableBaseEntity
 {
     [BsonElement("_id")]

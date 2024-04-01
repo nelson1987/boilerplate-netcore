@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 using MongoDB.Driver;
+using Stargazer.Domain.Bases;
 using Stargazer.Domain.Features.Movements;
 
 namespace Stargazer.Infrastructure.Persistence.Repositories;
@@ -13,7 +14,8 @@ public class MovementRepositoryAsync : GenericRepositoryAsync<Movement>, IMoveme
 {
     private readonly ILogger<GenericRepositoryAsync<Movement>> _logger;
 
-    public MovementRepositoryAsync(ILogger<GenericRepositoryAsync<Movement>> logger) : base(logger)
+    public MovementRepositoryAsync(ILogger<GenericRepositoryAsync<Movement>> logger, MongoDbOptions dbOptions) 
+        : base(logger, dbOptions, "warehouse", "collectionV4")
     {
         _logger = logger;
     }
@@ -21,9 +23,6 @@ public class MovementRepositoryAsync : GenericRepositoryAsync<Movement>, IMoveme
     public async Task UpdateStatusAsync(string id, MovementStatus newMovementStatus, CancellationToken cancellationToken = default)
     {
         _logger.LogInformation("UpdateStatusAsync");
-        MongoClient client = new MongoClient("mongodb://root:password@localhost:27017/");
-        IMongoDatabase db = client.GetDatabase("warehouse");
-        IMongoCollection<Movement> Collection = db.GetCollection<Movement>("collectionV4");
         var filter = Builders<Movement>.Filter.Eq(x => x.Id, id);
         var update = Builders<Movement>.Update
             .Set(x => x.MovementStatus, newMovementStatus)
