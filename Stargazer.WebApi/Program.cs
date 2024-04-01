@@ -1,6 +1,5 @@
 using Stargazer.Application;
 using Stargazer.Infrastructure;
-using Stargazer.Infrastructure.Persistence;
 using Stargazer.WebApi.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);

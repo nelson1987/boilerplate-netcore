@@ -30,7 +30,7 @@ public class MovementCreatedEvent : AuditableBaseEvent
             Status = v.Status,
             CreatedBy = v.CreatedBy,
             Created = v.Created,
-            LastModified = v.LastModified,
+            //LastModified = v.LastModified,
             LastModifiedBy = v.LastModifiedBy,
         };
     }

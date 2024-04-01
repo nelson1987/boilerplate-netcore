@@ -14,7 +14,9 @@ public record AddMovementCommand
             Valor = v.Valor,
             Status = Status.Pending,
             CreatedBy = "Command",
-            LastModifiedBy = "Command"
+            LastModifiedBy = "Command",
+            Created = DateTime.Now,
+            LastModified = DateTime.Now
         };
     }
 }

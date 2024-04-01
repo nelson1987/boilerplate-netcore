@@ -1,6 +1,7 @@
 ﻿using MassTransit;
 using Microsoft.Extensions.DependencyInjection;
 using Stargazer.Domain.Entities;
+using Stargazer.Infrastructure.Consumers;
 
 namespace Stargazer.Infrastructure;
 public static class Services
@@ -9,14 +10,21 @@ public static class Services
     {
         services.AddMassTransit(x =>
         {
-            x.SetKebabCaseEndpointNameFormatter();
-            x.AddConsumer<Consumer<MovementCreatedEvent>>();
             x.UsingRabbitMq((ctx, cfg) =>
             {
-                cfg.Host("amqp://guest:guest@localhost:5672");
+                cfg.Host("localhost", "/", h =>
+                {
+                    h.Username("guest");
+                    h.Password("guest");
+                });
+                //cfg.Host("amqp://guest:guest@localhost:5672");
                 cfg.ConfigureEndpoints(ctx);
                 //cfg.UseRawJsonSerializer();
             });
+            //x.AddConsumeObserver<ConsumeObserver>();
+            //x.AddPublishObserver<PublishObserver>();
+            x.SetKebabCaseEndpointNameFormatter();
+            x.AddConsumer<MovementConsumerAsync>();
         });
     }
 }

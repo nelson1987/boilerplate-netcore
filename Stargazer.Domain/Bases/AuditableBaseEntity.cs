@@ -1,10 +1,14 @@
 ﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace Stargazer.Domain.Bases;
 
 public abstract class AuditableBaseEntity
 {
-    public ObjectId Id { get; set; }
+    [BsonElement("_id")]
+    [BsonId]
+    [BsonRepresentation(BsonType.ObjectId)]
+    public string Id { get; set; }
     public required string CreatedBy { get; set; }
     public DateTime Created { get; set; }
     public required string LastModifiedBy { get; set; }
@@ -13,7 +17,7 @@ public abstract class AuditableBaseEntity
 
 public abstract class AuditableBaseEvent
 {
-    public ObjectId Id { get; set; }
+    public string Id { get; set; }
     public required string CreatedBy { get; set; }
     public DateTime Created { get; set; }
     public required string LastModifiedBy { get; set; }
