@@ -2,13 +2,9 @@
 using MongoDB.Driver;
 using Stargazer.Domain.Bases;
 using Stargazer.Domain.Features.Movements;
+using Stargazer.Domain.Repositories;
 
 namespace Stargazer.Infrastructure.Persistence.Repositories;
-
-public interface IMovementRepositoryAsync : IGenericRepositoryAsync<Movement>
-{
-    Task UpdateStatusAsync(string id, MovementStatus newMovementStatus, CancellationToken cancellationToken = default);
-}
 
 public class MovementRepositoryAsync : GenericRepositoryAsync<Movement>, IMovementRepositoryAsync
 {

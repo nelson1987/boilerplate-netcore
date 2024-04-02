@@ -1,20 +1,15 @@
 ﻿using MassTransit;
 using Microsoft.Extensions.Logging;
 using Stargazer.Domain.Bases;
+using Stargazer.Domain.Broker;
 
-namespace Stargazer.Infrastructure.Bases;
+namespace Stargazer.Infrastructure.Broker;
 
-
-public interface IConsumer<T> where T : AuditableBaseEvent
+public class GenericConsumer<T> : IConsumer<T>, IGenericConsumer<ConsumeContext<T>> where T : AuditableBaseEvent
 {
-    Task Consume(ConsumeContext<T> context);
-    //Task Execute(T @event);
-}
-public class Consumer<T> : MassTransit.IConsumer<T>, IConsumer<T> where T : AuditableBaseEvent
-{
-    private readonly ILogger<Consumer<T>> _logger;
+    private readonly ILogger<GenericConsumer<T>> _logger;
 
-    public Consumer(ILogger<Consumer<T>> logger)
+    public GenericConsumer(ILogger<GenericConsumer<T>> logger)
     {
         _logger = logger;
     }

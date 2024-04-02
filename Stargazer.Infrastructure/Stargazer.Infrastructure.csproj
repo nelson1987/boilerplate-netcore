@@ -1,18 +1,15 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="MassTransit.RabbitMQ" Version="8.2.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Stargazer.Domain\Stargazer.Domain.csproj" />
-    <ProjectReference Include="..\Stargazer.Infrastructure.Persistence\Stargazer.Infrastructure.Persistence.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Stargazer.Domain\Stargazer.Domain.csproj" />
+		<ProjectReference Include="..\Stargazer.Infrastructure.Persistence\Stargazer.Infrastructure.Persistence.csproj" />
+		<ProjectReference Include="..\Stargazer.Infrastructure.Broker\Stargazer.Infrastructure.Broker.csproj" />
+	</ItemGroup>
 
 </Project>

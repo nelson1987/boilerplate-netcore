@@ -1,19 +1,16 @@
 ﻿using MassTransit;
 using Microsoft.Extensions.Logging;
 using Stargazer.Domain.Bases;
+using Stargazer.Domain.Broker;
 
-namespace Stargazer.Infrastructure.Bases;
-public interface IProducer<T> where T : AuditableBaseEvent
-{
-    Task Send(T @event, CancellationToken cancellationToken = default);
-}
+namespace Stargazer.Infrastructure.Broker;
 
-public class Producer<T> : IProducer<T> where T : AuditableBaseEvent
+public class GenericProducer<T> : IGenericProducer<T> where T : AuditableBaseEvent
 {
     private readonly IBus _producer;
-    private readonly ILogger<Producer<T>> _logger;
+    private readonly ILogger<GenericProducer<T>> _logger;
 
-    public Producer(IBus producer, ILogger<Producer<T>> logger)
+    public GenericProducer(IBus producer, ILogger<GenericProducer<T>> logger)
     {
         _producer = producer;
         _logger = logger;

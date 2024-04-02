@@ -1,9 +1,9 @@
 ﻿using MassTransit;
 using Microsoft.Extensions.DependencyInjection;
 using Stargazer.Domain.Bases;
-using Stargazer.Infrastructure.Consumers;
+using Stargazer.Infrastructure.Broker.Consumers;
 
-namespace Stargazer.Infrastructure.Configurations;
+namespace Stargazer.Infrastructure.Broker.Configurations;
 public static class Services
 {
     public static IServiceCollection AddRabbitmqBroker(this IServiceCollection services, RabbitMqOptions options)

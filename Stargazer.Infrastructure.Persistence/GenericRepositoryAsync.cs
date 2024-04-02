@@ -1,17 +1,9 @@
 ﻿using Microsoft.Extensions.Logging;
 using MongoDB.Driver;
 using Stargazer.Domain.Bases;
+using Stargazer.Domain.Repositories;
 
 namespace Stargazer.Infrastructure.Persistence;
-
-public interface IGenericRepositoryAsync<T> where T : class
-{
-    Task CreateAsync(T entity, CancellationToken cancellationToken = default);
-
-    Task<List<T>> GetAsync(CancellationToken cancellationToken = default);
-
-    Task<T?> GetAsync(string id, CancellationToken cancellationToken = default);
-}
 
 public class GenericRepositoryAsync<T> : IGenericRepositoryAsync<T> where T : AuditableBaseEntity
 {

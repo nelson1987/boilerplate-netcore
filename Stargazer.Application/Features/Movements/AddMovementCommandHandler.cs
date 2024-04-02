@@ -1,8 +1,8 @@
 ﻿using FluentResults;
 using Stargazer.Domain.Features.Movements;
+using Stargazer.Domain.Repositories;
 using Stargazer.Infrastructure.Bases;
-using Stargazer.Infrastructure.Persistence.Repositories;
-using Stargazer.Infrastructure.Producers;
+using Stargazer.Infrastructure.Broker.Producers;
 
 namespace Stargazer.Application.Features.Movements;
 
