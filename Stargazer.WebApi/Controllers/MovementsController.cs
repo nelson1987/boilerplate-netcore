@@ -1,5 +1,6 @@
 using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Filters;
 using Stargazer.Application.Features.Movements;
 using Stargazer.Domain.Features.Movements;
 using Stargazer.Infrastructure.Persistence.Repositories;
@@ -7,6 +8,16 @@ using Stargazer.WebApi.Extensions;
 
 namespace Stargazer.WebApi.Controllers;
 
+public class ValidateModelAttribute : ActionFilterAttribute//, IAsyncActionFilter
+{
+    public override void OnActionExecuting(ActionExecutingContext context)
+    {
+        if (!context.ModelState.IsValid)
+        {
+            context.Result = new BadRequestObjectResult(context.ModelState);
+        }
+    }
+}
 [ApiController]
 [Route("api/[controller]")]
 public class MovementsController : ControllerBase
@@ -42,6 +53,7 @@ public class MovementsController : ControllerBase
     }
 
     [HttpPost]
+    [ValidateModel]
     public async Task<ActionResult> Post(AddMovementCommand command, CancellationToken cancellationToken)
     {
         _logger.LogInformation("Post");

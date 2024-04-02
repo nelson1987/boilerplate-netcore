@@ -2,21 +2,29 @@ using Stargazer.Application;
 using Stargazer.Infrastructure;
 using Stargazer.WebApi.Middlewares;
 using System.Text.Json.Serialization;
+using Stargazer.WebApi.Controllers;
 
 var builder = WebApplication.CreateBuilder(args);
+
 builder.Services.AddInfrastructure(builder.Configuration)
                 .AddApplication();
 
-builder.Services.AddControllers()
-                .AddJsonOptions(opt =>
-{
-    opt.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
-});
+builder.Services.AddControllers(x =>
+    {
+        x.Filters.Add(typeof(ValidateModelAttribute));
+    })
+    .AddJsonOptions(opt =>
+    {
+        opt.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+    });
+
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 //builder.Services.AddFluentValidationRulesToSwagger();
+
+builder.Services.ConfigureHttpsRedirection();
 
 var app = builder.Build();
 
