@@ -2,9 +2,20 @@ using Stargazer.Application;
 using Stargazer.Infrastructure;
 using Stargazer.WebApi.Middlewares;
 using System.Text.Json.Serialization;
+using Microsoft.AspNetCore.Identity;
 using Stargazer.WebApi.Controllers;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services
+    .AddAuthentication()
+    .AddBearerToken(IdentityConstants.BearerScheme);
+builder.Services.AddAuthorizationBuilder();
+
+//builder.Services
+//    .AddIdentityCore<AppUser>()
+//    .AddEntityFrameworkStores
+
 
 builder.Services.AddInfrastructure(builder.Configuration)
                 .AddApplication();
@@ -41,6 +52,8 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+//app.MapIdentityApi<AppUser>();
 
 app.Run();
 //docker run -dp 8080:8080 webapi
